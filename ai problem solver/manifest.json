@@ -1,0 +1,30 @@
+{
+  "manifest_version": 3,
+  "name": "MAANG AI Helper",
+  "version": "1.0",
+  "description": "AI Help for MAANG problems",
+  "permissions": ["activeTab", "scripting", "storage"],
+  "host_permissions": ["https://maang.in/*"],
+
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://maang.in/*"],
+      "js": ["content.js", "problem.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["help_icon.png", "popup.js"],
+      "matches": ["https://maang.in/*"]
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "MAANG AI Helper"
+  }
+
+}
